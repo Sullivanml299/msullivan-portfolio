@@ -11,6 +11,7 @@ class EntryGrid extends StatelessWidget {
             shrinkWrap: true,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
+              childAspectRatio: 1.3,
             ),
             itemCount: 10,
             itemBuilder: (BuildContext context, int index) {

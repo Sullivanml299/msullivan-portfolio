@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:msullivan_portfolio/config.dart';
 import 'package:msullivan_portfolio/entry_grid.dart';
 import 'package:msullivan_portfolio/header.dart';
 import 'package:msullivan_portfolio/utils/custom_components.dart';
@@ -17,10 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Portfolio',
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        primaryColor: Colors.blueGrey[900],
-      ),
+      theme: UnityTheme,
       home: const Portfolio(),
     );
   }
@@ -64,6 +62,7 @@ class _PortfolioState extends State<Portfolio> {
       CustomAppBarButton(
           img: Image.asset('images/UE_Logo_horizontal_unreal-engine_white.png'),
           onPressed: () {
+            // ThemeSwitcher.of(context).switchTheme(UETheme);
             print("UE");
             // TODO:
           }),
