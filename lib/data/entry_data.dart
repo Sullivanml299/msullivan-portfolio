@@ -1,0 +1,1 @@
+//TODO: define a struct for entry data and create list of entries
