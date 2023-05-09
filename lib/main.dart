@@ -43,7 +43,14 @@ class _PortfolioState extends State<Portfolio> {
         actions: _getCustomButtons(),
       ),
       body: Column(
-        children: [Header(img: headerImg), const EntryGrid()],
+        children: [
+          Header(img: headerImg),
+          const EntryGrid(),
+          Text(
+            "test",
+            style: TextStyle(fontSize: 10),
+          )
+        ],
       ),
       bottomNavigationBar: Footer(),
     );

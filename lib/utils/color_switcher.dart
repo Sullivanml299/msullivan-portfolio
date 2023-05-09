@@ -8,7 +8,7 @@ class ColorSwitcher extends StatefulWidget {
   ColorSwitcher({required this.child, required this.initialColor});
 
   @override
-  _ColorSwitcherState createState() => _ColorSwitcherState();
+  State<ColorSwitcher> createState() => _ColorSwitcherState();
 }
 
 class _ColorSwitcherState extends State<ColorSwitcher> {

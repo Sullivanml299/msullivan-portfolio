@@ -7,15 +7,18 @@ class EntryGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        child: GridView.builder(
-            shrinkWrap: true,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              childAspectRatio: 1.3,
-            ),
-            itemCount: 10,
-            itemBuilder: (BuildContext context, int index) {
-              return Entry();
-            }));
+        child: Padding(
+            padding: EdgeInsets.all(20),
+            child: GridView.builder(
+                shrinkWrap: true,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  childAspectRatio: 15 / 9,
+                  crossAxisSpacing: 10,
+                ),
+                itemCount: 1,
+                itemBuilder: (BuildContext context, int index) {
+                  return Entry();
+                })));
   }
 }
