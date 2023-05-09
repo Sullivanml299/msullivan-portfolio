@@ -3,15 +3,11 @@ import 'package:msullivan_portfolio/config.dart';
 import 'package:msullivan_portfolio/entry_grid.dart';
 import 'package:msullivan_portfolio/header.dart';
 import 'package:msullivan_portfolio/utils/custom_components.dart';
-import 'package:msullivan_portfolio/utils/theme_switcher.dart';
-
 import 'footer.dart';
+import 'utils/color_switcher.dart';
 
 void main() {
-  runApp(ThemeSwitcher(
-    child: const MyApp(),
-    service: GlobalThemeService(),
-  ));
+  runApp(ColorSwitcher(initialColor: UnityColor, child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -22,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Portfolio',
-      theme: ThemeSwitcher.of(context),
+      theme: MainTheme,
       home: const Portfolio(),
     );
   }
@@ -36,6 +32,9 @@ class Portfolio extends StatefulWidget {
 }
 
 class _PortfolioState extends State<Portfolio> {
+  Image headerImg =
+      Image.asset('images/U_Logo_T1_MadeWith_Small_White_RGB.png');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,12 +43,7 @@ class _PortfolioState extends State<Portfolio> {
         actions: _getCustomButtons(),
       ),
       body: Column(
-        children: [
-          Header(
-              img:
-                  Image.asset('images/U_Logo_T1_MadeWith_Small_White_RGB.png')),
-          const EntryGrid()
-        ],
+        children: [Header(img: headerImg), const EntryGrid()],
       ),
       bottomNavigationBar: Footer(),
     );
@@ -60,31 +54,39 @@ class _PortfolioState extends State<Portfolio> {
       CustomAppBarButton(
           img: Image.asset('images/U_Logo_T1_MadeWith_Small_White_RGB.png'),
           onPressed: () {
-            print("Unity");
+            InheritedColor.switchColor(context, UnityColor);
+            setState(() {
+              headerImg =
+                  Image.asset('images/U_Logo_T1_MadeWith_Small_White_RGB.png');
+            });
             // TODO:
           }),
       CustomAppBarButton(
           img: Image.asset('images/UE_Logo_horizontal_unreal-engine_white.png'),
           onPressed: () {
-            print(ThemeSwitcher.of(context)?.shadowColor);
-
+            InheritedColor.switchColor(context, UEColor);
             setState(() {
-              ThemeSwitcher.set(context, UETheme);
+              headerImg = Image.asset(
+                  'images/UE_Logo_horizontal_unreal-engine_white.png');
             });
-            print("UE");
-            print(ThemeSwitcher.of(context)?.shadowColor);
             // TODO:
           }),
       CustomAppBarButton(
           img: Image.asset('images/WebGL-Logo.png'),
           onPressed: () {
-            print("WebGL");
+            InheritedColor.switchColor(context, WebglColor);
+            setState(() {
+              headerImg = Image.asset('images/WebGL-Logo.png');
+            });
             // TODO:
           }),
       CustomAppBarButton(
           img: Image.asset('images/ludum_dare.png'),
           onPressed: () {
-            print("Ludum Dare");
+            InheritedColor.switchColor(context, LudumColor);
+            setState(() {
+              headerImg = Image.asset('images/ludum_dare.png');
+            });
             // TODO:
           }),
     ];

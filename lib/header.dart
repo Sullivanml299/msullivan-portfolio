@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'utils/color_switcher.dart';
+
 class Header extends StatelessWidget {
   const Header({
     super.key,
@@ -12,7 +14,8 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       elevation: 6,
-      shadowColor: Color.fromARGB(255, 0, 208, 255),
+      color: Color.fromARGB(255, 35, 37, 37),
+      shadowColor: InheritedColor.of(context).color,
       child: SizedBox(
           height: 200.0,
           child: Padding(
