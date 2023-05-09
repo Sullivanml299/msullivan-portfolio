@@ -20,8 +20,7 @@ class _YoutubePlayerState extends State<YoutubePlayer> {
     super.initState();
     _iframeElement.src = widget.source;
     _iframeElement.style.border = 'none';
-    _iframeElement.style.width = '100px';
-    _iframeElement.style.height = '70px';
+    _iframeElement.allowFullscreen = true;
 
     // ignore: undefined_prefixed_name
     ui.platformViewRegistry.registerViewFactory('iframeElement', (int viewId) {
