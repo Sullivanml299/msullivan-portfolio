@@ -7,6 +7,8 @@ import 'package:msullivan_portfolio/header.dart';
 import 'package:msullivan_portfolio/utils/custom_components.dart';
 import 'footer.dart';
 import 'utils/color_switcher.dart';
+import 'dart:html';
+import 'dart:ui' as ui;
 
 void main() {
   runApp(ColorSwitcher(initialColor: UnityColor, child: const MyApp()));
@@ -21,13 +23,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Portfolio',
       theme: MainTheme,
-      home: const Portfolio(),
+      home: Portfolio(),
     );
   }
 }
 
 class Portfolio extends StatefulWidget {
-  const Portfolio({super.key});
+  Portfolio({super.key});
+
+  final IFrameElement _iframeElement = IFrameElement();
 
   @override
   State<Portfolio> createState() => _PortfolioState();
@@ -39,9 +43,17 @@ class _PortfolioState extends State<Portfolio> {
   DisplayType displayType = DisplayType.unity;
   bool showDetails = false;
   EntryData? selectedEntry;
+  HtmlElementView? htmlElementView;
+
+  @override
+  void initState() {
+    super.initState();
+    _setupiFrame();
+  }
 
   @override
   Widget build(BuildContext context) {
+    if (showDetails) updateiFrame(selectedEntry!.youtubeLink);
     return Scaffold(
       appBar: AppBar(
         title: const Text('HeartLamp Games'),
@@ -72,9 +84,11 @@ class _PortfolioState extends State<Portfolio> {
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width * 0.5,
               child: DetailsPane(
-                  key: UniqueKey(),
-                  data: selectedEntry!,
-                  closeDetails: hideEntryDetails)),
+                key: UniqueKey(),
+                data: selectedEntry!,
+                closeDetails: hideEntryDetails,
+                player: htmlElementView!,
+              )),
         ],
       );
     } else {
@@ -115,7 +129,6 @@ class _PortfolioState extends State<Portfolio> {
       selectedEntry = null;
       showDetails = false;
     });
-    print(selectedEntry);
   }
 
   List<Widget> _getCustomButtons() {
@@ -129,6 +142,7 @@ class _PortfolioState extends State<Portfolio> {
                   Image.asset('images/U_Logo_T1_MadeWith_Small_White_RGB.png');
               displayType = DisplayType.unity;
             });
+            hideEntryDetails();
           }),
       CustomAppBarButton(
           img: Image.asset('images/UE_Logo_horizontal_unreal-engine_white.png'),
@@ -139,6 +153,7 @@ class _PortfolioState extends State<Portfolio> {
                   'images/UE_Logo_horizontal_unreal-engine_white.png');
               displayType = DisplayType.unreal;
             });
+            hideEntryDetails();
           }),
       CustomAppBarButton(
           img: Image.asset('images/WebGL-Logo.png'),
@@ -148,6 +163,7 @@ class _PortfolioState extends State<Portfolio> {
               headerImg = Image.asset('images/WebGL-Logo.png');
               displayType = DisplayType.webgl;
             });
+            hideEntryDetails();
           }),
       CustomAppBarButton(
           img: Image.asset('images/ludum_dare.png'),
@@ -157,7 +173,27 @@ class _PortfolioState extends State<Portfolio> {
               headerImg = Image.asset('images/ludum_dare.png');
               displayType = DisplayType.ludum;
             });
+            hideEntryDetails();
           }),
     ];
+  }
+
+  void _setupiFrame() {
+    // ignore: undefined_prefixed_name
+    ui.platformViewRegistry.registerViewFactory('iframeElement', (int viewId) {
+      return widget._iframeElement;
+    });
+  }
+
+  void updateiFrame(String url) {
+    widget._iframeElement.src = url;
+    widget._iframeElement.style.border = 'none';
+    widget._iframeElement.style.width = '100%';
+    widget._iframeElement.style.height = '100%';
+    widget._iframeElement.allowFullscreen = true;
+    htmlElementView = HtmlElementView(
+      key: UniqueKey(),
+      viewType: 'iframeElement',
+    );
   }
 }

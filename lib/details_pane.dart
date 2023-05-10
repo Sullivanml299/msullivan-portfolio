@@ -4,10 +4,15 @@ import 'package:msullivan_portfolio/utils/color_switcher.dart';
 import 'package:msullivan_portfolio/utils/youtube_player.dart';
 
 class DetailsPane extends StatefulWidget {
-  const DetailsPane({Key? key, required this.data, required this.closeDetails})
+  const DetailsPane(
+      {Key? key,
+      required this.data,
+      required this.closeDetails,
+      required this.player})
       : super(key: key);
   final EntryData data;
   final Function closeDetails;
+  final HtmlElementView player;
 
   @override
   State<DetailsPane> createState() => _DetailsPaneState();
@@ -16,7 +21,6 @@ class DetailsPane extends StatefulWidget {
 class _DetailsPaneState extends State<DetailsPane> {
   @override
   Widget build(BuildContext context) {
-    print(widget.data.youtubeLink);
     return Container(
         decoration: BoxDecoration(
             color: Color.fromARGB(255, 32, 34, 34),
@@ -46,8 +50,7 @@ class _DetailsPaneState extends State<DetailsPane> {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.4,
                   height: (MediaQuery.of(context).size.width * 0.4) * 0.5625,
-                  child: YoutubePlayer(
-                      key: UniqueKey(), source: widget.data.youtubeLink),
+                  child: widget.player,
                 )
               ],
             ))));
