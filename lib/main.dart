@@ -185,12 +185,13 @@ class _PortfolioState extends State<Portfolio> {
     });
   }
 
+  //FIXME: fullscreen won't work. Could be that going fullscreen causes the iframe to be rebuild.
   void updateiFrame(String url) {
     widget._iframeElement.src = url;
     widget._iframeElement.style.border = 'none';
     widget._iframeElement.style.width = '100%';
     widget._iframeElement.style.height = '100%';
-    widget._iframeElement.allowFullscreen = true;
+    widget._iframeElement.allowFullscreen = false;
     htmlElementView = HtmlElementView(
       key: UniqueKey(),
       viewType: 'iframeElement',

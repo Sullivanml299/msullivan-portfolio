@@ -51,6 +51,24 @@ class _DetailsPaneState extends State<DetailsPane> {
                   width: MediaQuery.of(context).size.width * 0.4,
                   height: (MediaQuery.of(context).size.width * 0.4) * 0.5625,
                   child: widget.player,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: RichText(
+                      text: TextSpan(
+                          text: "Description: ",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                          children: [
+                        TextSpan(
+                            text: widget.data.description,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.normal))
+                      ])),
                 )
               ],
             ))));
