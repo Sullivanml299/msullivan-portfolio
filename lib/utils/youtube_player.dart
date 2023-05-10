@@ -14,13 +14,14 @@ class YoutubePlayer extends StatefulWidget {
 class _YoutubePlayerState extends State<YoutubePlayer> {
   final html.IFrameElement _iframeElement = html.IFrameElement();
 
-  //FIXME: player controls don't scale properly
   @override
   void initState() {
     super.initState();
     _iframeElement.src = widget.source;
     _iframeElement.style.border = 'none';
     _iframeElement.allowFullscreen = true;
+    _iframeElement.style.width = '100%';
+    _iframeElement.style.height = '100%';
 
     // ignore: undefined_prefixed_name
     ui.platformViewRegistry.registerViewFactory('iframeElement', (int viewId) {

@@ -1,20 +1,87 @@
-//TODO: define a struct for entry data and create list of entries
-import 'dart:ffi';
-import 'dart:ui';
-
-import 'package:flutter/material.dart';
-
 class EntryData {
   String title;
   String description;
   String imgPath;
-  String link;
-  String linkText;
+  String gifPath;
+  String youtubeLink;
   EntryData({
     required this.title,
     required this.description,
     required this.imgPath,
-    required this.link,
-    required this.linkText,
+    required this.gifPath,
+    required this.youtubeLink,
   });
 }
+
+enum DisplayType { unity, unreal, webgl, ludum, resume }
+
+//UNITY
+
+List<EntryData> UnityEntryList = [
+  EntryData(
+      title: "Watchers",
+      description: "Experimenting with shaders in Unity.",
+      imgPath: "images/watchers_still.jpg",
+      gifPath: "images/watchers.gif",
+      youtubeLink: "https://www.youtube.com/embed/R0CdKjkKzio"),
+  EntryData(
+      title: "Obligatory Breakout Clone",
+      description:
+          "Just a basic Breakout clone with some simple particle effects.",
+      imgPath: "images/breakout_still.jpg",
+      gifPath: "images/breakout.gif",
+      youtubeLink: "https://www.youtube.com/embed/jTD17VrgdiE"),
+  EntryData(
+      title: "FMOD - Train",
+      description:
+          "Playing with FMOD. All tracks used were self-made using Finale software.",
+      imgPath: "images/train_still.jpg",
+      gifPath: "images/train.gif",
+      youtubeLink: "https://www.youtube.com/embed/61BsdPnK_pg"),
+  EntryData(
+      title: "Fun with Quaternions",
+      description: "Playing with Quaternions.",
+      imgPath: "images/rotations_still.jpg",
+      gifPath: "images/rotations.gif",
+      youtubeLink: "https://www.youtube.com/embed/P4_sIS0uxvI"),
+];
+
+//UNREAL
+
+List<EntryData> UnrealEntryList = [
+  EntryData(
+      title: "Obligatory Breakout Clone",
+      description:
+          "Just a basic Breakout clone with some simple particle effects.",
+      imgPath: "images/breakout_still.jpg",
+      gifPath: "images/breakout.gif",
+      youtubeLink: "https://www.youtube.com/embed/jTD17VrgdiE"),
+  EntryData(
+      title: "Fun with Quaternions",
+      description: "Playing with Quaternions.",
+      imgPath: "images/rotations_still.jpg",
+      gifPath: "images/rotations.gif",
+      youtubeLink: "https://www.youtube.com/embed/P4_sIS0uxvI"),
+];
+
+//WebGL
+List<EntryData> WebglEntryList = [
+  EntryData(
+      title: "FMOD - Train",
+      description:
+          "Playing with FMOD. All tracks used were self-made using Finale software.",
+      imgPath: "images/train_still.jpg",
+      gifPath: "images/train.gif",
+      youtubeLink: "https://www.youtube.com/embed/61BsdPnK_pg"),
+];
+
+//Ludum Dare
+
+List<EntryData> LudumDareEntryList = [
+  EntryData(
+      title: "Fun with Quaternions",
+      description: "Playing with Quaternions.",
+      imgPath: "images/rotations_still.jpg",
+      gifPath: "images/rotations.gif",
+      youtubeLink: "https://www.youtube.com/embed/P4_sIS0uxvI"),
+];

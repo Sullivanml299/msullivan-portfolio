@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:msullivan_portfolio/data/entry_data.dart';
 import 'package:msullivan_portfolio/utils/color_switcher.dart';
 
 import 'utils/youtube_player.dart';
 
 class Entry extends StatefulWidget {
-  const Entry({super.key});
+  const Entry(
+      {super.key, required this.entryData, required this.showEntryDetails});
+
+  final EntryData entryData;
+  final Function showEntryDetails;
 
   @override
   State<Entry> createState() => _EntryState();
@@ -12,9 +17,36 @@ class Entry extends StatefulWidget {
 
 class _EntryState extends State<Entry> {
   double borderRadius = 10.0;
+  late Image entryImage;
+  late Image entryGif;
+  bool hover = false;
+
+  @override
+  void initState() {
+    super.initState();
+    entryImage = Image.asset(widget.entryData.imgPath, fit: BoxFit.fill);
+    entryGif = Image.asset(widget.entryData.gifPath, fit: BoxFit.fill);
+  }
 
   @override
   Widget build(BuildContext context) {
+    return InkWell(
+      borderRadius: BorderRadius.circular(borderRadius),
+      highlightColor: InheritedColor.of(context).color,
+      hoverColor: InheritedColor.of(context).color.withAlpha(10),
+      onHover: (value) {
+        setState(() {
+          hover = value;
+        });
+      },
+      onTap: () {
+        widget.showEntryDetails(widget.entryData);
+      },
+      child: buildEntryCard(),
+    );
+  }
+
+  Widget buildEntryCard() {
     return Card(
         color: Color.fromARGB(255, 36, 37, 37),
         elevation: 10,
@@ -46,15 +78,15 @@ class _EntryState extends State<Entry> {
       borderRadius: BorderRadius.only(
           topLeft: Radius.circular(borderRadius),
           topRight: Radius.circular(borderRadius)),
-      child: Image.asset('images/watchers.gif', fit: BoxFit.fill),
+      child: hover ? entryGif : entryImage,
     );
   }
 
   Widget buildDetails() {
     return Center(
         child: Text(
-      "test",
-      style: TextStyle(fontSize: 10),
+      widget.entryData.title,
+      style: TextStyle(fontSize: 30),
     ));
   }
 }

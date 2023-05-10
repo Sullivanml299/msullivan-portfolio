@@ -66,6 +66,13 @@ flutter:
     - assets/images/UE_Logo_horizontal_unreal-engine_white.png
     - assets/images/WebGL-Logo.png
     - assets/images/watchers.gif
+    - assets/images/watchers_still.jpg
+    - assets/images/breakout.gif
+    - assets/images/breakout_still.jpg
+    - assets/images/train.gif
+    - assets/images/train_still.jpg
+    - assets/images/rotations.gif
+    - assets/images/rotations_still.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
