@@ -67,12 +67,13 @@ List<EntryData> UnrealEntryList = [
 //WebGL
 List<EntryData> WebglEntryList = [
   EntryData(
-      title: "FMOD - Train",
+      title: "WebGL - Bunny",
       description:
-          "Playing with FMOD. All tracks used were self-made using Finale software.",
-      imgPath: "images/train_still.jpg",
-      gifPath: "images/train.gif",
-      youtubeLink: "https://www.youtube.com/embed/61BsdPnK_pg"),
+          "Phong shading. Two light sources. Fresnel shader with ambient noise."
+          "Perspective (beginning) and Orthographic (end) cameras.",
+      imgPath: "images/webgl_bunny_still.jpg",
+      gifPath: "images/webgl_bunny.gif",
+      youtubeLink: "https://www.youtube.com/embed/DdfanrAyK6c"),
 ];
 
 //Ludum Dare
