@@ -39,7 +39,7 @@ class Portfolio extends StatefulWidget {
 
 class _PortfolioState extends State<Portfolio> {
   Image headerImg =
-      Image.asset('images/U_Logo_T1_MadeWith_Small_White_RGB.png');
+      Image.asset('assets/images/U_Logo_T1_MadeWith_Small_White_RGB.png');
   DisplayType displayType = DisplayType.unity;
   bool showDetails = false;
   EntryData? selectedEntry;
@@ -134,43 +134,45 @@ class _PortfolioState extends State<Portfolio> {
   List<Widget> _getCustomButtons() {
     return [
       CustomAppBarButton(
-          img: Image.asset('images/U_Logo_T1_MadeWith_Small_White_RGB.png'),
+          img: Image.asset(
+              'assets/images/U_Logo_T1_MadeWith_Small_White_RGB.png'),
           onPressed: () {
             InheritedColor.switchColor(context, UnityColor);
             setState(() {
-              headerImg =
-                  Image.asset('images/U_Logo_T1_MadeWith_Small_White_RGB.png');
+              headerImg = Image.asset(
+                  'assets/images/U_Logo_T1_MadeWith_Small_White_RGB.png');
               displayType = DisplayType.unity;
             });
             hideEntryDetails();
           }),
       CustomAppBarButton(
-          img: Image.asset('images/UE_Logo_horizontal_unreal-engine_white.png'),
+          img: Image.asset(
+              'assets/images/UE_Logo_horizontal_unreal-engine_white.png'),
           onPressed: () {
             InheritedColor.switchColor(context, UEColor);
             setState(() {
               headerImg = Image.asset(
-                  'images/UE_Logo_horizontal_unreal-engine_white.png');
+                  'assets/images/UE_Logo_horizontal_unreal-engine_white.png');
               displayType = DisplayType.unreal;
             });
             hideEntryDetails();
           }),
       CustomAppBarButton(
-          img: Image.asset('images/WebGL-Logo.png'),
+          img: Image.asset('assets/images/WebGL-Logo.png'),
           onPressed: () {
             InheritedColor.switchColor(context, WebglColor);
             setState(() {
-              headerImg = Image.asset('images/WebGL-Logo.png');
+              headerImg = Image.asset('assets/images/WebGL-Logo.png');
               displayType = DisplayType.webgl;
             });
             hideEntryDetails();
           }),
       CustomAppBarButton(
-          img: Image.asset('images/ludum_dare.png'),
+          img: Image.asset('assets/images/ludum_dare.png'),
           onPressed: () {
             InheritedColor.switchColor(context, LudumColor);
             setState(() {
-              headerImg = Image.asset('images/ludum_dare.png');
+              headerImg = Image.asset('assets/images/ludum_dare.png');
               displayType = DisplayType.ludum;
             });
             hideEntryDetails();
