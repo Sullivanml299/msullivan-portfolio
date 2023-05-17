@@ -44,6 +44,7 @@ class _PortfolioState extends State<Portfolio> {
       Image.asset('assets/images/U_Logo_T1_MadeWith_Small_White_RGB.png');
   DisplayType displayType = DisplayType.unity;
   bool showDetails = false;
+  bool showResume = true;
   EntryData? selectedEntry;
   HtmlElementView? htmlElementView;
 
@@ -58,14 +59,19 @@ class _PortfolioState extends State<Portfolio> {
     if (showDetails) updateiFrame(selectedEntry!.youtubeLink);
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Marcus Sullivan',
-          style: GoogleFonts.silkscreen(fontSize: 30),
+        title: TextButton(
+          onPressed: () {
+            setState(() {
+              showResume = true;
+            });
+          },
+          child: Text('Marcus Sullivan',
+              style: GoogleFonts.silkscreen(fontSize: 30)),
           // style: GoogleFonts.vt323(fontSize: 40),
         ),
         actions: _getCustomButtons(),
       ),
-      body: Resume(), //_buildBody(),
+      body: showResume ? const Resume() : _buildBody(),
       bottomNavigationBar: Footer(),
     );
   }
@@ -148,6 +154,7 @@ class _PortfolioState extends State<Portfolio> {
               headerImg = Image.asset(
                   'assets/images/U_Logo_T1_MadeWith_Small_White_RGB.png');
               displayType = DisplayType.unity;
+              showResume = false;
             });
             hideEntryDetails();
           }),
@@ -160,6 +167,7 @@ class _PortfolioState extends State<Portfolio> {
               headerImg = Image.asset(
                   'assets/images/UE_Logo_horizontal_unreal-engine_white.png');
               displayType = DisplayType.unreal;
+              showResume = false;
             });
             hideEntryDetails();
           }),
@@ -170,6 +178,7 @@ class _PortfolioState extends State<Portfolio> {
             setState(() {
               headerImg = Image.asset('assets/images/WebGL-Logo.png');
               displayType = DisplayType.webgl;
+              showResume = false;
             });
             hideEntryDetails();
           }),
@@ -180,6 +189,7 @@ class _PortfolioState extends State<Portfolio> {
             setState(() {
               headerImg = Image.asset('assets/images/ludum_dare.png');
               displayType = DisplayType.ludum;
+              showResume = false;
             });
             hideEntryDetails();
           }),

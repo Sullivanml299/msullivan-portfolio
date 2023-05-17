@@ -56,7 +56,7 @@ class Resume extends StatelessWidget {
                             " I can still remember the first time I managed to get into the center of Giant's Deep in Outer Wilds."
                             " I didn't follow a quest marker or a waypoint, I just saw a the jellyfish traversing the barrier and reasoned that I could probably hitch a ride."
                             " This sense of discovery and exploration is what I want to bring to others through my work."
-                            " This site includes a few prototypes I have made. Along with example game design documents and a resume.",
+                            " This site includes a few prototypes I have made along with example game design documents and a resume.",
                         style:
                             GoogleFonts.abel(fontSize: 30, color: Colors.white),
                         children: <TextSpan>[TextSpan(text: "")])))
