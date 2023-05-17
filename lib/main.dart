@@ -9,6 +9,7 @@ import 'footer.dart';
 import 'utils/color_switcher.dart';
 import 'dart:html';
 import 'dart:ui' as ui;
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(ColorSwitcher(initialColor: UnityColor, child: const MyApp()));
@@ -56,7 +57,11 @@ class _PortfolioState extends State<Portfolio> {
     if (showDetails) updateiFrame(selectedEntry!.youtubeLink);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HeartLamp Games'),
+        title: Text(
+          'Marcus Sullivan',
+          style: GoogleFonts.silkscreen(fontSize: 30),
+          // style: GoogleFonts.vt323(fontSize: 40),
+        ),
         actions: _getCustomButtons(),
       ),
       body: _buildBody(),
