@@ -101,6 +101,7 @@ class Resume extends StatelessWidget {
     ]);
   }
 
+  //TOOD: add tab controller and put each section in a tab
   Widget _buildResumeCard(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
@@ -112,35 +113,39 @@ class Resume extends StatelessWidget {
             child: RichText(
               text: TextSpan(children: <TextSpan>[
                 TextSpan(
-                    text: 'EDUCATION\n',
+                    text: 'EDUCATION\n\n',
                     style: GoogleFonts.vt323(
                         fontSize: 60, fontWeight: FontWeight.bold),
                     children: <TextSpan>[
+                      TextSpan(
+                        text: "Drexel University\n",
+                        style: GoogleFonts.vt323(
+                            fontSize: 50, fontWeight: FontWeight.bold),
+                      ),
+                      buildEducation("MS in Software Engineering",
+                          "June 2021 - March 2023", "4.0"),
+                      buildEducation("MS in Computer Science",
+                          "June 2021 - March 2023", "3.98"),
                       buildEducation(
-                          "Drexel University",
-                          "MS in Software Engineering",
-                          "June 2021 - March 2023",
-                          "4.0"),
-                      buildEducation(
-                          "Drexel University",
-                          "MS in Computer Science",
-                          "June 2021 - March 2023",
-                          "3.98"),
+                          "Post-Baccalaureate Certificate\nin Computer Science",
+                          "March 2020 - December 2020",
+                          "4.0")
                     ]),
                 TextSpan(
-                  text: '\nEMPLOYMENT\n',
+                  text: '\nEMPLOYMENT\n\n',
                   style: GoogleFonts.vt323(
                       fontSize: 60, fontWeight: FontWeight.bold),
                   children: <TextSpan>[
-                    buildEmployment(
-                        "Alliance Pharma",
-                        "Manager of IT and Lab Operations",
+                    TextSpan(
+                      text: "Alliance Pharma\n",
+                      style: GoogleFonts.vt323(
+                          fontSize: 50, fontWeight: FontWeight.bold),
+                    ),
+                    buildEmployment("Manager of IT and Lab Operations",
                         "July 2019 - March 2020"),
-                    buildEmployment("Alliance Pharma", "IT Specialist",
-                        "December 2017 - July 2019"),
                     buildEmployment(
-                        "Alliance Pharma",
-                        "Quality Control Specialist",
+                        "IT Specialist", "December 2017 - July 2019"),
+                    buildEmployment("Quality Control Specialist",
                         "October 2016 - July 2017"),
                   ],
                 ),
@@ -150,10 +155,8 @@ class Resume extends StatelessWidget {
     );
   }
 
-  TextSpan buildEducation(
-      String university, String degree, String dates, String gpa) {
+  TextSpan buildEducation(String degree, String dates, String gpa) {
     return TextSpan(
-      text: '$university\n',
       style: GoogleFonts.abel(fontSize: 40),
       children: <TextSpan>[
         TextSpan(text: '$degree\n', style: GoogleFonts.abel(fontSize: 30)),
@@ -163,9 +166,8 @@ class Resume extends StatelessWidget {
     );
   }
 
-  TextSpan buildEmployment(String employer, String position, String dates) {
+  TextSpan buildEmployment(String position, String dates) {
     return TextSpan(
-      text: '$employer\n',
       style: GoogleFonts.abel(fontSize: 40),
       children: <TextSpan>[
         TextSpan(text: '$position\n', style: GoogleFonts.abel(fontSize: 30)),
