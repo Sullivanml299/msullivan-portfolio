@@ -1,5 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'package:url_launcher/url_launcher.dart';
 
 class Resume extends StatelessWidget {
   const Resume({Key? key}) : super(key: key);
@@ -38,30 +41,64 @@ class Resume extends StatelessWidget {
                       backgroundImage: AssetImage('images/profile.jpg'),
                     ),
                     Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 120, 0, 0),
-                        child: Text("ABOUT ME\n\n",
-                            style: GoogleFonts.abel(fontSize: 70),
-                            textAlign: TextAlign.left)),
+                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "ABOUT ME",
+                              style: GoogleFonts.abel(
+                                  fontSize: 70,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                            _buildContactInfo(),
+                          ],
+                        )),
                   ],
                 )),
             Padding(
-                padding: EdgeInsets.symmetric(vertical: 20),
+                padding: const EdgeInsets.symmetric(vertical: 20),
                 child: RichText(
                     softWrap: true,
                     textAlign: TextAlign.left,
                     text: TextSpan(
-                        text: "I am an aspiring game designer and programmer."
-                            " Video games have been the most positive force in my life."
-                            " They have generated irreplaceable experiences that would be impossible to replicate in any other medium."
-                            " I can still remember the first time I managed to get into the center of Giant's Deep in Outer Wilds."
-                            " I didn't follow a quest marker or a waypoint, I just saw a the jellyfish traversing the barrier and reasoned that I could probably hitch a ride."
-                            " This sense of discovery and exploration is what I want to bring to others through my work."
-                            " This site includes a few prototypes I have made along with example game design documents and a resume.",
-                        style:
-                            GoogleFonts.abel(fontSize: 30, color: Colors.white),
-                        children: <TextSpan>[TextSpan(text: "")])))
+                      text: "I am an aspiring game designer and programmer."
+                          " Video games have been the most positive force in my life."
+                          " They have generated irreplaceable experiences that would be impossible to replicate in any other medium."
+                          " I can still remember the first time I managed to get into the center of Giant's Deep in Outer Wilds."
+                          " I didn't follow a quest marker or a waypoint, I just saw a the jellyfish traversing the barrier and reasoned that I could probably hitch a ride."
+                          " This sense of discovery and exploration is what I want to bring to others through my work."
+                          " This site was programmed using flutter and includes a few prototypes I have made along with example game design documents and a resume.",
+                      style:
+                          GoogleFonts.abel(fontSize: 30, color: Colors.white),
+                    )))
           ],
         ));
+  }
+
+  Widget _buildContactInfo() {
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      RichText(
+          text: TextSpan(
+              text: "Email: ",
+              style: GoogleFonts.abel(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+              children: [
+            TextSpan(
+                text: "sullivanml299@gmail.com",
+                style: GoogleFonts.abel(color: Colors.blueAccent, fontSize: 20),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    final Uri email =
+                        Uri(scheme: 'mailto', path: 'sullivanml299@gmail.com');
+                    launchUrl(email);
+                  })
+          ]))
+    ]);
   }
 
   Widget _buildResumeCard(BuildContext context) {
@@ -71,47 +108,43 @@ class Resume extends StatelessWidget {
       child: Card(
           elevation: 10,
           child: SingleChildScrollView(
-            padding: EdgeInsets.all(30),
+            padding: const EdgeInsets.all(30),
             child: RichText(
-              text: TextSpan(
-                  text: 'RESUME\n',
+              text: TextSpan(children: <TextSpan>[
+                TextSpan(
+                    text: 'EDUCATION\n',
+                    style: GoogleFonts.vt323(
+                        fontSize: 60, fontWeight: FontWeight.bold),
+                    children: <TextSpan>[
+                      buildEducation(
+                          "Drexel University",
+                          "MS in Software Engineering",
+                          "June 2021 - March 2023",
+                          "4.0"),
+                      buildEducation(
+                          "Drexel University",
+                          "MS in Computer Science",
+                          "June 2021 - March 2023",
+                          "3.98"),
+                    ]),
+                TextSpan(
+                  text: '\nEMPLOYMENT\n',
                   style: GoogleFonts.vt323(
-                      fontSize: 80, fontWeight: FontWeight.bold),
+                      fontSize: 60, fontWeight: FontWeight.bold),
                   children: <TextSpan>[
-                    TextSpan(
-                        text: '\nEDUCATION\n\n',
-                        style: GoogleFonts.vt323(
-                            fontSize: 50, fontWeight: FontWeight.bold),
-                        children: <TextSpan>[
-                          buildEducation(
-                              "Drexel University",
-                              "MS in Software Engineering",
-                              "June 2021 - March 2023",
-                              "4.0"),
-                          buildEducation(
-                              "Drexel University",
-                              "MS in Computer Science",
-                              "June 2021 - March 2023",
-                              "3.98"),
-                        ]),
-                    TextSpan(
-                      text: '\nEMPLOYMENT\n\n',
-                      style: GoogleFonts.vt323(
-                          fontSize: 50, fontWeight: FontWeight.bold),
-                      children: <TextSpan>[
-                        buildEmployment(
-                            "Alliance Pharma",
-                            "Manager of IT and Lab Operations",
-                            "July 2019 - March 2020"),
-                        buildEmployment("Alliance Pharma", "IT Specialist",
-                            "December 2017 - July 2019"),
-                        buildEmployment(
-                            "Alliance Pharma",
-                            "Quality Control Specialist",
-                            "October 2016 - July 2017"),
-                      ],
-                    ),
-                  ]),
+                    buildEmployment(
+                        "Alliance Pharma",
+                        "Manager of IT and Lab Operations",
+                        "July 2019 - March 2020"),
+                    buildEmployment("Alliance Pharma", "IT Specialist",
+                        "December 2017 - July 2019"),
+                    buildEmployment(
+                        "Alliance Pharma",
+                        "Quality Control Specialist",
+                        "October 2016 - July 2017"),
+                  ],
+                ),
+              ]),
             ),
           )),
     );
