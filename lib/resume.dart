@@ -14,7 +14,7 @@ class Resume extends StatelessWidget {
       children: [
         SizedBox(
           width: MediaQuery.of(context).size.width * 0.5,
-          child: _buildAboutMe(),
+          child: _buildAboutMe(context),
         ),
         SizedBox(
           width: MediaQuery.of(context).size.width * 0.5,
@@ -24,7 +24,7 @@ class Resume extends StatelessWidget {
     );
   }
 
-  Widget _buildAboutMe() {
+  Widget _buildAboutMe(BuildContext context) {
     return SingleChildScrollView(
         padding: EdgeInsets.all(30),
         child: Column(
@@ -53,7 +53,7 @@ class Resume extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white),
                             ),
-                            _buildContactInfo(),
+                            _buildContactInfo(context),
                           ],
                         )),
                   ],
@@ -63,6 +63,8 @@ class Resume extends StatelessWidget {
                 child: RichText(
                     softWrap: true,
                     textAlign: TextAlign.left,
+                    selectionRegistrar: SelectionContainer.maybeOf(context),
+                    selectionColor: Colors.white10,
                     text: TextSpan(
                       text: "I am an aspiring game designer and programmer."
                           " Video games have been the most positive force in my life."
@@ -78,25 +80,60 @@ class Resume extends StatelessWidget {
         ));
   }
 
-  Widget _buildContactInfo() {
+  Widget _buildContactInfo(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       RichText(
-          text: TextSpan(
-              text: "Email: ",
-              style: GoogleFonts.abel(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
-              children: [
+          selectionRegistrar: SelectionContainer.maybeOf(context),
+          selectionColor: Colors.white10,
+          text: TextSpan(children: [
             TextSpan(
-                text: "sullivanml299@gmail.com",
-                style: GoogleFonts.abel(color: Colors.blueAccent, fontSize: 20),
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () {
-                    final Uri email =
-                        Uri(scheme: 'mailto', path: 'sullivanml299@gmail.com');
-                    launchUrl(email);
-                  })
+                text: "Name:",
+                style: GoogleFonts.abel(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+                children: [
+                  TextSpan(
+                      text: " Marcus Sullivan\n",
+                      style: GoogleFonts.abel(fontWeight: FontWeight.normal)),
+                ]),
+            TextSpan(
+                text: "Email: ",
+                style: GoogleFonts.abel(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+                children: [
+                  TextSpan(
+                      text: "sullivanml299@gmail.com\n",
+                      style: GoogleFonts.abel(
+                          color: Colors.blueAccent, fontSize: 20),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          final Uri email = Uri(
+                              scheme: 'mailto',
+                              path: 'sullivanml299@gmail.com');
+                          launchUrl(email);
+                        })
+                ]),
+            TextSpan(
+                text: "Resume: ",
+                style: GoogleFonts.abel(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+                children: [
+                  TextSpan(
+                      text: "Google Drive Link",
+                      style: GoogleFonts.abel(
+                          color: Colors.blueAccent, fontSize: 20),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          final Uri site = Uri.parse(
+                              "https://docs.google.com/document/d/1fNqWOetONRjfrvVZ0yJCr0ZCiNP20uc2Hr8QEzNvPoE/edit?usp=sharing");
+                          launchUrl(site);
+                        })
+                ])
           ]))
     ]);
   }
@@ -111,6 +148,8 @@ class Resume extends StatelessWidget {
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(30),
             child: RichText(
+              selectionRegistrar: SelectionContainer.maybeOf(context),
+              selectionColor: Colors.white10,
               text: TextSpan(children: <TextSpan>[
                 TextSpan(
                     text: 'EDUCATION\n\n',

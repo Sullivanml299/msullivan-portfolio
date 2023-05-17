@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Portfolio',
       theme: MainTheme,
-      home: Portfolio(),
+      home: SelectionArea(child: Portfolio()),
     );
   }
 }
@@ -65,8 +65,11 @@ class _PortfolioState extends State<Portfolio> {
               showResume = true;
             });
           },
-          child: Text('Marcus Sullivan',
-              style: GoogleFonts.silkscreen(fontSize: 30)),
+          child: RichText(
+              text: TextSpan(
+                  text: 'ZeroTheDog Games',
+                  style: GoogleFonts.silkscreen(
+                      fontSize: 30, color: Colors.blueAccent))),
           // style: GoogleFonts.vt323(fontSize: 40),
         ),
         actions: _getCustomButtons(),
