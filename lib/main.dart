@@ -4,6 +4,7 @@ import 'package:msullivan_portfolio/data/entry_data.dart';
 import 'package:msullivan_portfolio/details_pane.dart';
 import 'package:msullivan_portfolio/entry_grid.dart';
 import 'package:msullivan_portfolio/header.dart';
+import 'package:msullivan_portfolio/resume.dart';
 import 'package:msullivan_portfolio/utils/custom_components.dart';
 import 'footer.dart';
 import 'utils/color_switcher.dart';
@@ -64,7 +65,7 @@ class _PortfolioState extends State<Portfolio> {
         ),
         actions: _getCustomButtons(),
       ),
-      body: _buildBody(),
+      body: Resume(), //_buildBody(),
       bottomNavigationBar: Footer(),
     );
   }
