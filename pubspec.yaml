@@ -76,6 +76,10 @@ flutter:
     - assets/images/webgl_bunny.gif
     - assets/images/webgl_bunny_still.jpg
     - assets/images/profile.jpg
+    - assets/images/journal.gif
+    - assets/images/journal_still.jpg
+    - assets/images/bear.gif
+    - assets/images/bear_still.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

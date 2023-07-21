@@ -65,6 +65,9 @@ class _PortfolioState extends State<Portfolio> {
               showResume = true;
             });
           },
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.transparent,
+          ),
           child: RichText(
               text: TextSpan(
                   text: 'ZeroTheDog Games',
@@ -161,19 +164,19 @@ class _PortfolioState extends State<Portfolio> {
             });
             hideEntryDetails();
           }),
-      CustomAppBarButton(
-          img: Image.asset(
-              'assets/images/UE_Logo_horizontal_unreal-engine_white.png'),
-          onPressed: () {
-            InheritedColor.switchColor(context, UEColor);
-            setState(() {
-              headerImg = Image.asset(
-                  'assets/images/UE_Logo_horizontal_unreal-engine_white.png');
-              displayType = DisplayType.unreal;
-              showResume = false;
-            });
-            hideEntryDetails();
-          }),
+      // CustomAppBarButton(
+      //     img: Image.asset(
+      //         'assets/images/UE_Logo_horizontal_unreal-engine_white.png'),
+      //     onPressed: () {
+      //       InheritedColor.switchColor(context, UEColor);
+      //       setState(() {
+      //         headerImg = Image.asset(
+      //             'assets/images/UE_Logo_horizontal_unreal-engine_white.png');
+      //         displayType = DisplayType.unreal;
+      //         showResume = false;
+      //       });
+      //       hideEntryDetails();
+      //     }),
       CustomAppBarButton(
           img: Image.asset('assets/images/WebGL-Logo.png'),
           onPressed: () {
@@ -185,17 +188,17 @@ class _PortfolioState extends State<Portfolio> {
             });
             hideEntryDetails();
           }),
-      CustomAppBarButton(
-          img: Image.asset('assets/images/ludum_dare.png'),
-          onPressed: () {
-            InheritedColor.switchColor(context, LudumColor);
-            setState(() {
-              headerImg = Image.asset('assets/images/ludum_dare.png');
-              displayType = DisplayType.ludum;
-              showResume = false;
-            });
-            hideEntryDetails();
-          }),
+      // CustomAppBarButton(
+      //     img: Image.asset('assets/images/ludum_dare.png'),
+      //     onPressed: () {
+      //       InheritedColor.switchColor(context, LudumColor);
+      //       setState(() {
+      //         headerImg = Image.asset('assets/images/ludum_dare.png');
+      //         displayType = DisplayType.ludum;
+      //         showResume = false;
+      //       });
+      //       hideEntryDetails();
+      //     }),
     ];
   }
 

@@ -19,6 +19,19 @@ enum DisplayType { unity, unreal, webgl, ludum, resume }
 
 List<EntryData> UnityEntryList = [
   EntryData(
+      title: "Journal",
+      description: "In-game drawing and note taking prototype",
+      imgPath: "assets/images/journal_still.jpg",
+      gifPath: "assets/images/journal.gif",
+      youtubeLink: "https://www.youtube.com/embed/aVtvSZZeEXE"),
+  EntryData(
+      title: "State Machine AI",
+      description:
+          "Simple State Machine AI. Enemy models from Unity Asset Store.",
+      imgPath: "assets/images/bear_still.jpg",
+      gifPath: "assets/images/bear.gif",
+      youtubeLink: "https://www.youtube.com/embed/xc6XH3HuEfY"),
+  EntryData(
       title: "Watchers",
       description: "Experimenting with shaders in Unity.",
       imgPath: "assets/images/watchers_still.jpg",
@@ -48,21 +61,7 @@ List<EntryData> UnityEntryList = [
 
 //UNREAL
 
-List<EntryData> UnrealEntryList = [
-  EntryData(
-      title: "Obligatory Breakout Clone",
-      description:
-          "Just a basic Breakout clone with some simple particle effects.",
-      imgPath: "assets/images/breakout_still.jpg",
-      gifPath: "assets/images/breakout.gif",
-      youtubeLink: "https://www.youtube.com/embed/jTD17VrgdiE"),
-  EntryData(
-      title: "Fun with Quaternions",
-      description: "Playing with Quaternions.",
-      imgPath: "assets/images/rotations_still.jpg",
-      gifPath: "assets/images/rotations.gif",
-      youtubeLink: "https://www.youtube.com/embed/P4_sIS0uxvI"),
-];
+List<EntryData> UnrealEntryList = [];
 
 //WebGL
 List<EntryData> WebglEntryList = [
@@ -78,11 +77,4 @@ List<EntryData> WebglEntryList = [
 
 //Ludum Dare
 
-List<EntryData> LudumDareEntryList = [
-  EntryData(
-      title: "Fun with Quaternions",
-      description: "Playing with Quaternions.",
-      imgPath: "assets/images/rotations_still.jpg",
-      gifPath: "assets/images/rotations.gif",
-      youtubeLink: "https://www.youtube.com/embed/P4_sIS0uxvI"),
-];
+List<EntryData> LudumDareEntryList = [];
