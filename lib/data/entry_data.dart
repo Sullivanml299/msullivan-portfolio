@@ -20,14 +20,26 @@ enum DisplayType { unity, unreal, webgl, ludum, resume }
 List<EntryData> UnityEntryList = [
   EntryData(
       title: "Journal",
-      description: "In-game drawing and note taking prototype",
+      description: "In-game drawing and note-taking prototype.\n\n"
+          "Journal cover and hands were modeled and animated in blender."
+          " The pages themselves are procedurally modeled using bezier patches."
+          " The color picker is shaded by mapping from the cube's model space to color space and applying a noise layer using fractional brownian motion."
+          " Line drawing is essentially breseham's algorithm with shape fill.",
       imgPath: "assets/images/journal_still.jpg",
       gifPath: "assets/images/journal.gif",
       youtubeLink: "https://www.youtube.com/embed/aVtvSZZeEXE"),
   EntryData(
-      title: "State Machine AI",
+      title: "Procedural Vine",
       description:
-          "Simple State Machine AI. Enemy models from Unity Asset Store.",
+          "Procedurally modeled vine using Catmull-rom spline with line rendere points as control points.",
+      imgPath: "assets/images/vines_still.jpg",
+      gifPath: "assets/images/vines.gif",
+      youtubeLink: "https://www.youtube.com/embed/o1fiW7CzJvE"),
+  EntryData(
+      title: "State Machine AI",
+      description: "Simple state machine enemy AI for the bear and mushrooms."
+          " The color cube is the target."
+          " Enemy models are free assets from the Unity Asset Store.",
       imgPath: "assets/images/bear_still.jpg",
       gifPath: "assets/images/bear.gif",
       youtubeLink: "https://www.youtube.com/embed/xc6XH3HuEfY"),

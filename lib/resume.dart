@@ -31,7 +31,7 @@ class Resume extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
-                height: 200,
+                height: 220,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -66,13 +66,21 @@ class Resume extends StatelessWidget {
                     selectionRegistrar: SelectionContainer.maybeOf(context),
                     selectionColor: Colors.white10,
                     text: TextSpan(
-                      text: "I am an aspiring game designer and programmer."
-                          " Video games have been the most positive force in my life."
-                          " They have generated irreplaceable experiences that would be impossible to replicate in any other medium."
-                          " I can still remember the first time I managed to get into the center of Giant's Deep in Outer Wilds."
-                          " I didn't follow a quest marker or a waypoint, I just saw a the jellyfish traversing the barrier and reasoned that I could probably hitch a ride."
-                          " This sense of discovery and exploration is what I want to bring to others through my work."
-                          " This site was programmed using flutter and includes a few prototypes I have made along with example game design documents and a resume.",
+                      text:
+                          "Afer years of working in the pharmaceutical industry, I decided to take the logical next step... I ditched my career and am pursuing a job in game development!"
+                          "\n\n"
+                          "This site is intended to act as a portfolio of sorts and show off a few of the prototypes that I have made."
+                          " Just click on the category in the top right to see the relevant projects."
+                          " Most recently, I have been experimenting with shaders and procedural modeling."
+                          " I mostly work with Unity, but have been playing around with Unreal and WebGL as well."
+                          " Examples for these will be added as they are completed."
+                          " The site itself was programmed in Flutter and is hosted as a static page on AWS S3."
+                          "\n\n"
+                          "Some of my favorite games/moments:\n"
+                          "\t\t Outer Wilds - Figuring out how to get into the center of Giant's Deep."
+                          "\n\t\t Elden Ring - The map keeps getting bigger?!"
+                          "\n\t\t Divinity: Original Sin I/II - Trying everything I can to break the game. :)"
+                          "\n\n If you have any questions or comments, please feel free to reach out to me at the email above.",
                       style:
                           GoogleFonts.abel(fontSize: 30, color: Colors.white),
                     )))
@@ -86,6 +94,12 @@ class Resume extends StatelessWidget {
           selectionRegistrar: SelectionContainer.maybeOf(context),
           selectionColor: Colors.white10,
           text: TextSpan(children: [
+            TextSpan(
+                text: "Aspiring game designer and programmer.\n",
+                style: GoogleFonts.abel(
+                    color: Colors.white,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold)),
             TextSpan(
                 text: "Name:",
                 style: GoogleFonts.abel(
@@ -124,7 +138,7 @@ class Resume extends StatelessWidget {
                     fontWeight: FontWeight.bold),
                 children: [
                   TextSpan(
-                      text: "Google Drive Link",
+                      text: "Google Drive",
                       style: GoogleFonts.abel(
                           color: Colors.blueAccent, fontSize: 20),
                       recognizer: TapGestureRecognizer()
