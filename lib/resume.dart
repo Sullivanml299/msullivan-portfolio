@@ -38,7 +38,7 @@ class Resume extends StatelessWidget {
                   children: [
                     const CircleAvatar(
                       radius: 100,
-                      backgroundImage: AssetImage('images/profile.jpg'),
+                      backgroundImage: AssetImage('assets/images/profile.jpg'),
                     ),
                     Padding(
                         padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
