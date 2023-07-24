@@ -24,14 +24,14 @@ List<EntryData> UnityEntryList = [
           "Journal cover and hands were modeled and animated in blender."
           " The pages themselves are procedurally modeled using bezier patches."
           " The color picker is shaded by mapping from the cube's model space to color space and applying a noise layer using fractional brownian motion."
-          " Line drawing is essentially breseham's algorithm with shape fill.",
+          " Line drawing is essentially bresenham's algorithm with shape fill.",
       imgPath: "assets/images/journal_still.jpg",
       gifPath: "assets/images/journal.gif",
       youtubeLink: "https://www.youtube.com/embed/aVtvSZZeEXE"),
   EntryData(
       title: "Procedural Vine",
       description:
-          "Procedurally modeled vine using Catmull-rom spline with line rendere points as control points.",
+          "Procedurally modeled vine using Catmull-rom spline with line renderer points as control points.",
       imgPath: "assets/images/vines_still.jpg",
       gifPath: "assets/images/vines.gif",
       youtubeLink: "https://www.youtube.com/embed/o1fiW7CzJvE"),
@@ -59,7 +59,7 @@ List<EntryData> UnityEntryList = [
   EntryData(
       title: "FMOD - Train",
       description:
-          "Playing with FMOD. All tracks used were self-made using Finale software.",
+          "Playing with FMOD. All audio tracks used were self-made using Finale software.",
       imgPath: "assets/images/train_still.jpg",
       gifPath: "assets/images/train.gif",
       youtubeLink: "https://www.youtube.com/embed/61BsdPnK_pg"),

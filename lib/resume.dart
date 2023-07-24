@@ -80,7 +80,7 @@ class Resume extends StatelessWidget {
                           "\t\t Outer Wilds - Figuring out how to get into the center of Giant's Deep."
                           "\n\t\t Elden Ring - The map keeps getting bigger?!"
                           "\n\t\t Divinity: Original Sin I/II - Trying everything I can to break the game. :)"
-                          "\n\n If you have any questions or comments, please feel free to reach out to me at the email above.",
+                          "\n\nIf you have any questions or comments, please feel free to reach out to me at the email above.",
                       style:
                           GoogleFonts.abel(fontSize: 30, color: Colors.white),
                     )))
