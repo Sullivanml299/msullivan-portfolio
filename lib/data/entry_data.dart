@@ -19,6 +19,16 @@ enum DisplayType { unity, unreal, webgl, ludum, resume }
 
 List<EntryData> UnityEntryList = [
   EntryData(
+      title: "Rune Classifier",
+      description: "Runtime image-classifier magic system prototype.\n\n"
+          "ConvNet classifier trained using PyTorch and exported to ONNX format."
+          " Network was trained using 100 base images for each rune,"
+          " augmented to 1000 images per rune using random transformations."
+          " Implemented in Unity using Barracuda.",
+      imgPath: "assets/images/RuneClassifier_Still.jpg",
+      gifPath: "assets/images/RuneClassifier.gif",
+      youtubeLink: "https://www.youtube.com/embed/iKsDJ1lGlfY"),
+  EntryData(
       title: "Journal",
       description: "In-game drawing and note-taking prototype.\n\n"
           "Journal cover and hands were modeled and animated in blender."
