@@ -5,23 +5,26 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Resume extends StatelessWidget {
-  const Resume({Key? key}) : super(key: key);
+  const Resume({Key? key, required this.isMobile}) : super(key: key);
+  final bool isMobile;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: MediaQuery.of(context).size.width * 0.5,
-          child: _buildAboutMe(context),
-        ),
-        SizedBox(
-          width: MediaQuery.of(context).size.width * 0.5,
-          child: _buildResumeCard(context),
-        )
-      ],
-    );
+    return isMobile
+        ? _buildAboutMe(context)
+        : Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: _buildAboutMe(context),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: _buildResumeCard(context),
+              )
+            ],
+          );
   }
 
   Widget _buildAboutMe(BuildContext context) {
@@ -30,34 +33,7 @@ class Resume extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SizedBox(
-                height: 220,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const CircleAvatar(
-                      radius: 100,
-                      backgroundImage: AssetImage('assets/images/profile.jpg'),
-                    ),
-                    Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "ABOUT ME",
-                              style: GoogleFonts.abel(
-                                  fontSize: 70,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            ),
-                            _buildContactInfo(context),
-                          ],
-                        )),
-                  ],
-                )),
+            _buildContactSummary(context),
             Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: RichText(
@@ -84,6 +60,13 @@ class Resume extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                               color: Color.fromARGB(255, 0, 229, 255)),
                         ),
+                        (isMobile
+                            ? const TextSpan(
+                                text:
+                                    " section in the appdrawer to see the prototype in action!")
+                            : const TextSpan(
+                                text:
+                                    " tab in the top right to see the prototype in action!")),
                         const TextSpan(
                             text:
                                 " tab in the top right to see the prototype in action!"
@@ -93,6 +76,60 @@ class Resume extends StatelessWidget {
                     )))
           ],
         ));
+  }
+
+  Widget _buildContactSummary(BuildContext context) {
+    if (isMobile) {
+      return SizedBox(
+          child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          const CircleAvatar(
+            radius: 100,
+            backgroundImage: AssetImage('assets/images/profile.jpg'),
+          ),
+          Padding(
+              padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildContactInfo(context),
+                ],
+              )),
+        ],
+      ));
+    } else {
+      return SizedBox(
+          height: 220,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const CircleAvatar(
+                radius: 100,
+                backgroundImage: AssetImage('assets/images/profile.jpg'),
+              ),
+              Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "ABOUT ME",
+                        style: GoogleFonts.abel(
+                            fontSize: 70,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                      _buildContactInfo(context),
+                    ],
+                  )),
+            ],
+          ));
+    }
   }
 
   Widget _buildContactInfo(BuildContext context) {
@@ -105,7 +142,7 @@ class Resume extends StatelessWidget {
                 text: "Game Programmer and Designer.\n",
                 style: GoogleFonts.abel(
                     color: Colors.white,
-                    fontSize: 30,
+                    fontSize: isMobile ? 25 : 30,
                     fontWeight: FontWeight.bold)),
             TextSpan(
                 text: "Name:",
@@ -175,7 +212,9 @@ class Resume extends StatelessWidget {
                 TextSpan(
                     text: 'EDUCATION\n\n',
                     style: GoogleFonts.vt323(
-                        fontSize: 60, fontWeight: FontWeight.bold),
+                        fontSize: 60,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
                     children: <TextSpan>[
                       TextSpan(
                         text: "Drexel University\n",
@@ -194,7 +233,9 @@ class Resume extends StatelessWidget {
                 TextSpan(
                   text: '\nEMPLOYMENT\n\n',
                   style: GoogleFonts.vt323(
-                      fontSize: 60, fontWeight: FontWeight.bold),
+                      fontSize: 60,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
                   children: <TextSpan>[
                     TextSpan(
                       text: "Alliance Pharma\n",

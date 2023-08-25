@@ -64,7 +64,11 @@ class _PortfolioState extends State<Portfolio> {
               child: ListView(children: _getCustomButtons()),
             )
           : null,
-      body: showResume ? const Resume() : _buildBody(),
+      body: showResume
+          ? Resume(
+              isMobile: _isMobile(),
+            )
+          : _buildBody(),
       bottomNavigationBar: Footer(),
     );
   }
