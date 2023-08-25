@@ -44,7 +44,7 @@ class _PortfolioState extends State<Portfolio> {
       Image.asset('assets/images/U_Logo_T1_MadeWith_Small_White_RGB.png');
   DisplayType displayType = DisplayType.unity;
   bool showDetails = false;
-  bool showResume = true;
+  bool showResume = false;
   EntryData? selectedEntry;
   HtmlElementView? htmlElementView;
 
@@ -58,31 +58,53 @@ class _PortfolioState extends State<Portfolio> {
   Widget build(BuildContext context) {
     if (showDetails) updateiFrame(selectedEntry!.youtubeLink);
     return Scaffold(
-      appBar: AppBar(
-        title: TextButton(
-          onPressed: () {
-            setState(() {
-              showResume = true;
-            });
-          },
-          style: TextButton.styleFrom(
-            foregroundColor: Colors.transparent,
-          ),
-          child: RichText(
-              text: TextSpan(
-                  text: 'ZeroTheDog Games',
-                  style: GoogleFonts.silkscreen(
-                      fontSize: 30, color: Colors.blueAccent))),
-          // style: GoogleFonts.vt323(fontSize: 40),
-        ),
-        actions: _getCustomButtons(),
-      ),
+      appBar: _builAppBar(),
+      drawer: _isMobile()
+          ? Drawer(
+              child: ListView(children: _getCustomButtons()),
+            )
+          : null,
       body: showResume ? const Resume() : _buildBody(),
       bottomNavigationBar: Footer(),
     );
   }
 
+  AppBar _builAppBar() {
+    if (_isMobile()) {
+      return AppBar();
+    } else {
+      return AppBar(
+        title: _buildAboutMeButton(),
+        actions: _getCustomButtons(),
+      );
+    }
+  }
+
+  Widget _buildAboutMeButton() {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: 10, vertical: (_isMobile() ? 20 : 5)),
+      child: TextButton(
+        onPressed: () {
+          setState(() {
+            showResume = true;
+          });
+        },
+        style: TextButton.styleFrom(
+          foregroundColor: Colors.transparent,
+        ),
+        child: RichText(
+            text: TextSpan(
+                text: 'About Me',
+                style: GoogleFonts.silkscreen(
+                    fontSize: 30, color: Colors.blueAccent))),
+        // style: GoogleFonts.vt323(fontSize: 40),
+      ),
+    );
+  }
+
   Widget _buildBody() {
+    if (_isMobile()) return _buildMobileBody();
     if (showDetails) {
       return Row(
         children: [
@@ -94,7 +116,8 @@ class _PortfolioState extends State<Portfolio> {
                 Header(img: headerImg),
                 EntryGrid(
                     entryList: _getEntryList(),
-                    showEntryDetails: showEntryDetails),
+                    showEntryDetails: showEntryDetails,
+                    isMobile: _isMobile()),
               ],
             ),
           ),
@@ -106,6 +129,7 @@ class _PortfolioState extends State<Portfolio> {
                 data: selectedEntry!,
                 closeDetails: hideEntryDetails,
                 player: htmlElementView!,
+                isMobile: _isMobile(),
               )),
         ],
       );
@@ -114,7 +138,31 @@ class _PortfolioState extends State<Portfolio> {
         children: [
           Header(img: headerImg),
           EntryGrid(
-              entryList: _getEntryList(), showEntryDetails: showEntryDetails),
+              entryList: _getEntryList(),
+              showEntryDetails: showEntryDetails,
+              isMobile: _isMobile()),
+        ],
+      );
+    }
+  }
+
+  Widget _buildMobileBody() {
+    if (showDetails) {
+      return DetailsPane(
+        key: UniqueKey(),
+        data: selectedEntry!,
+        closeDetails: hideEntryDetails,
+        player: htmlElementView!,
+        isMobile: _isMobile(),
+      );
+    } else {
+      return Column(
+        children: [
+          Header(img: headerImg),
+          EntryGrid(
+              entryList: _getEntryList(),
+              showEntryDetails: showEntryDetails,
+              isMobile: _isMobile()),
         ],
       );
     }
@@ -163,7 +211,8 @@ class _PortfolioState extends State<Portfolio> {
               showResume = false;
             });
             hideEntryDetails();
-          }),
+          },
+          isMobile: _isMobile()),
       // CustomAppBarButton(
       //     img: Image.asset(
       //         'assets/images/UE_Logo_horizontal_unreal-engine_white.png'),
@@ -187,7 +236,8 @@ class _PortfolioState extends State<Portfolio> {
               showResume = false;
             });
             hideEntryDetails();
-          }),
+          },
+          isMobile: _isMobile()),
       // CustomAppBarButton(
       //     img: Image.asset('assets/images/ludum_dare.png'),
       //     onPressed: () {
@@ -199,7 +249,12 @@ class _PortfolioState extends State<Portfolio> {
       //       });
       //       hideEntryDetails();
       //     }),
+      _isMobile() ? _buildAboutMeButton() : Container(),
     ];
+  }
+
+  bool _isMobile() {
+    return MediaQuery.of(context).size.width < 1200;
   }
 
   void _setupiFrame() {

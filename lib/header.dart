@@ -19,7 +19,7 @@ class Header extends StatelessWidget {
       child: SizedBox(
           height: 200.0,
           child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 50),
+              padding: EdgeInsets.symmetric(vertical: 50, horizontal: 20),
               child: Align(
                 alignment: Alignment.center,
                 child: img,

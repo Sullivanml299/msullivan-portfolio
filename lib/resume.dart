@@ -66,23 +66,30 @@ class Resume extends StatelessWidget {
                     selectionRegistrar: SelectionContainer.maybeOf(context),
                     selectionColor: Colors.white10,
                     text: TextSpan(
-                      text:
-                          "Afer years of working in the pharmaceutical industry, I decided to take the logical next step... I ditched my career and am pursuing a job in game development!"
-                          "\n\n"
-                          "This site is intended to act as a portfolio of sorts and show off a few of the prototypes that I have made."
-                          " Just click on the category in the top right to see the relevant projects."
-                          " Most recently, I have been experimenting with shaders and procedural modeling."
-                          " I mostly work with Unity, but have been playing around with Unreal and WebGL as well."
-                          " Examples for these will be added as they are completed."
-                          " The site itself was programmed in Flutter and is hosted as a static page on AWS S3."
-                          "\n\n"
-                          "Some of my favorite games/moments:\n"
-                          "\t\t Outer Wilds - Figuring out how to get into the center of Giant's Deep."
-                          "\n\t\t Elden Ring - The map keeps getting bigger?!"
-                          "\n\t\t Divinity: Original Sin I/II - Trying everything I can to break the game. :)"
-                          "\n\nIf you have any questions or comments, please feel free to reach out to me at the email above.",
                       style:
-                          GoogleFonts.abel(fontSize: 30, color: Colors.white),
+                          GoogleFonts.abel(fontSize: 25, color: Colors.white),
+                      children: <TextSpan>[
+                        const TextSpan(
+                            text:
+                                "This site is intended to act as a portfolio and show off a few of the projects that I have worked on."
+                                " More recently, I've been focusing on leveraging modern technologies"
+                                " to create new gameplay mechanics that I haven't seen before in games."
+                                " For example, I am currently working on a project that uses Convolutional Neural Networks to"
+                                " classify player-drawn magical runes, in real time."
+                                " Take a look at the"),
+                        TextSpan(
+                          text: " Made with Unity",
+                          style: GoogleFonts.abel(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 0, 229, 255)),
+                        ),
+                        const TextSpan(
+                            text:
+                                " tab in the top right to see the prototype in action!"
+                                "\n\nThe site itself was programmed using Flutter and is hosted as a static page on AWS S3."
+                                "\nIf you have any questions or comments, please feel free to reach out to me at the email above."),
+                      ],
                     )))
           ],
         ));
@@ -95,7 +102,7 @@ class Resume extends StatelessWidget {
           selectionColor: Colors.white10,
           text: TextSpan(children: [
             TextSpan(
-                text: "Aspiring game designer and programmer.\n",
+                text: "Game Programmer and Designer.\n",
                 style: GoogleFonts.abel(
                     color: Colors.white,
                     fontSize: 30,
