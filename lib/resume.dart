@@ -69,7 +69,6 @@ class Resume extends StatelessWidget {
                                     " tab in the top right to see the prototype in action!")),
                         const TextSpan(
                             text:
-                                " tab in the top right to see the prototype in action!"
                                 "\n\nThe site itself was programmed using Flutter and is hosted as a static page on AWS S3."
                                 "\nIf you have any questions or comments, please feel free to reach out to me at the email above."),
                       ],
