@@ -6,13 +6,25 @@ import 'package:msullivan_portfolio/entry_grid.dart';
 import 'package:msullivan_portfolio/header.dart';
 import 'package:msullivan_portfolio/resume.dart';
 import 'package:msullivan_portfolio/utils/custom_components.dart';
+import 'amplifyconfiguration.dart';
 import 'footer.dart';
 import 'utils/color_switcher.dart';
 import 'dart:html';
 import 'dart:ui' as ui;
 import 'package:google_fonts/google_fonts.dart';
+import 'package:amplify_api/amplify_api.dart';
+import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:msullivan_portfolio/models/ModelProvider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  try {
+    await _configureAmplify();
+  } on AmplifyAlreadyConfiguredException {
+    debugPrint('Amplify configuration failed.');
+  }
+
   runApp(ColorSwitcher(initialColor: UnityColor, child: const MyApp()));
 }
 
@@ -37,6 +49,13 @@ class Portfolio extends StatefulWidget {
 
   @override
   State<Portfolio> createState() => _PortfolioState();
+}
+
+Future<void> _configureAmplify() async {
+  await Amplify.addPlugins([
+    AmplifyAPI(modelProvider: ModelProvider.instance),
+  ]);
+  await Amplify.configure(amplifyconfig);
 }
 
 class _PortfolioState extends State<Portfolio> {
