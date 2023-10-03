@@ -20,35 +20,36 @@ class ProjectsListController extends _$ProjectsListController {
     return _fetchProjects();
   }
 
-  Future<void> addProject({
-    required String name,
-    required String destination,
-    required String startDate,
-    required String endDate,
-  }) async {
-    final project = Project(
-      projectName: name,
-      destination: destination,
-      startDate: TemporalDate(DateTime.parse(startDate)),
-      endDate: TemporalDate(DateTime.parse(endDate)),
-    );
+  //TODO: add back in if I want to make a form for adding and removing projects
+  // Future<void> addProject({
+  //   required String name,
+  //   required String destination,
+  //   required String startDate,
+  //   required String youtubeUrl,
+  // }) async {
+  //   final project = Project(
+  //     projectName: name,
+  //     projectDescription: destination,
+  //     createdDate: TemporalDate(DateTime.parse(startDate)),
+  //     youtubeUrl: youtubeUrl,
+  //   );
 
-    state = const AsyncValue.loading();
+  //   state = const AsyncValue.loading();
 
-    state = await AsyncValue.guard(() async {
-      final projectsRepository = ref.read(projectsRepositoryProvider);
-      await projectsRepository.add(project);
-      return _fetchProjects();
-    });
-  }
+  //   state = await AsyncValue.guard(() async {
+  //     final projectsRepository = ref.read(projectsRepositoryProvider);
+  //     await projectsRepository.add(project);
+  //     return _fetchProjects();
+  //   });
+  // }
 
-  Future<void> removeProject(Project project) async {
-    state = const AsyncValue.loading();
-    state = await AsyncValue.guard(() async {
-      final projectsRepository = ref.read(projectsRepositoryProvider);
-      await projectsRepository.delete(project);
+  // Future<void> removeProject(Project project) async {
+  //   state = const AsyncValue.loading();
+  //   state = await AsyncValue.guard(() async {
+  //     final projectsRepository = ref.read(projectsRepositoryProvider);
+  //     await projectsRepository.delete(project);
 
-      return _fetchProjects();
-    });
-  }
+  //     return _fetchProjects();
+  //   });
+  // }
 }

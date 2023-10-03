@@ -1,21 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:msullivan_portfolio/entry.dart';
-
+import 'package:msullivan_portfolio/models/ModelProvider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'data/entry_data.dart';
 
 class EntryGrid extends StatelessWidget {
   const EntryGrid(
       {Key? key,
-      required this.entryList,
+      required this.projectsList,
       required this.showEntryDetails,
       required this.isMobile})
       : super(key: key);
-  final List<EntryData> entryList;
+  final AsyncValue<List<Project>> projectsList;
   final Function showEntryDetails;
   final bool isMobile;
 
   @override
   Widget build(BuildContext context) {
+    return projectsList.when(
+        data: (projectList) => buildGrid(projectList),
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (error, stackTrace) => Text('Error: $error'));
+  }
+
+  Widget buildGrid(List<Project> projectList) {
+    if (projectList.length == 0) {
+      return Center(child: Text('No projects found'));
+    }
     return Expanded(
         child: Padding(
             padding: EdgeInsets.all(20),
@@ -27,12 +38,12 @@ class EntryGrid extends StatelessWidget {
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
                 ),
-                itemCount: entryList.length,
+                itemCount: projectList.length,
                 itemBuilder: (BuildContext context, int index) {
                   //NOTE: UniqueKey() is used to force the widget to rebuild
                   return Entry(
                       key: UniqueKey(),
-                      entryData: entryList[index],
+                      project: projectList[index],
                       showEntryDetails: showEntryDetails);
                 })));
   }

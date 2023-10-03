@@ -8,6 +8,8 @@ type Project @model (mutations: null, subscriptions: null) @auth(rules: [{ allow
   projectDescription: String!
   createdDate: AWSDate!
   youtubeUrl: String!
-  tripImageUrl: String
-  tripImageKey: String
+  projectImageUrl: String
+  projectImageKey: String
+  projectGifUrl: String
+  projectGifKey: String
 }

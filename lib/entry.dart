@@ -2,14 +2,15 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:msullivan_portfolio/data/entry_data.dart';
 import 'package:msullivan_portfolio/utils/color_switcher.dart';
-
-import 'utils/youtube_player.dart';
+import 'package:msullivan_portfolio/models/ModelProvider.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class Entry extends StatefulWidget {
   const Entry(
-      {super.key, required this.entryData, required this.showEntryDetails});
+      {super.key, required this.project, required this.showEntryDetails});
 
-  final EntryData entryData;
+  // final EntryData entryData;
+  final Project project;
   final Function showEntryDetails;
 
   @override
@@ -25,8 +26,8 @@ class _EntryState extends State<Entry> {
   @override
   void initState() {
     super.initState();
-    entryImage = Image.asset(widget.entryData.imgPath, fit: BoxFit.fill);
-    entryGif = Image.asset(widget.entryData.gifPath, fit: BoxFit.fill);
+    // entryImage = Image.asset(widget.entryData.imgPath, fit: BoxFit.fill);
+    // entryGif = Image.asset(widget.entryData.gifPath, fit: BoxFit.fill);
   }
 
   @override
@@ -41,7 +42,7 @@ class _EntryState extends State<Entry> {
         });
       },
       onTap: () {
-        widget.showEntryDetails(widget.entryData);
+        widget.showEntryDetails(widget.project);
       },
       child: buildEntryCard(),
     );
@@ -79,7 +80,27 @@ class _EntryState extends State<Entry> {
       borderRadius: BorderRadius.only(
           topLeft: Radius.circular(borderRadius),
           topRight: Radius.circular(borderRadius)),
-      child: hover ? entryGif : entryImage,
+      child: hover
+          ? CachedNetworkImage(
+              errorWidget: (context, url, dynamic error) =>
+                  const Icon(Icons.error_outline_outlined),
+              imageUrl: widget.project.projectGifUrl!,
+              cacheKey: widget.project.projectGifKey,
+              // width: double.maxFinite,
+              // height: 500,
+              // alignment: Alignment.topCenter,
+              fit: BoxFit.fill,
+            )
+          : CachedNetworkImage(
+              errorWidget: (context, url, dynamic error) =>
+                  const Icon(Icons.error_outline_outlined),
+              imageUrl: widget.project.projectImageUrl!,
+              cacheKey: widget.project.projectImageKey,
+              // width: double.maxFinite,
+              // height: 500,
+              // alignment: Alignment.topCenter,
+              fit: BoxFit.fill,
+            ),
     );
   }
 
@@ -88,7 +109,7 @@ class _EntryState extends State<Entry> {
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         child: Center(
             child: AutoSizeText(
-          widget.entryData.title,
+          widget.project.projectName,
           style: TextStyle(fontSize: 30),
         )));
   }

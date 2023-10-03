@@ -26,7 +26,7 @@ export 'Project.dart';
 
 class ModelProvider implements amplify_core.ModelProviderInterface {
   @override
-  String version = "50cab77720d750801953d44f657ab22a";
+  String version = "edcc36828e0acf1b58bbdf30b2c05219";
   @override
   List<amplify_core.ModelSchema> modelSchemas = [Project.schema];
   @override

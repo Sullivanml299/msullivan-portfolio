@@ -15,6 +15,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:amplify_api/amplify_api.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:msullivan_portfolio/models/ModelProvider.dart';
+import 'package:msullivan_portfolio/utils/controller/projects_list_controller.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 Future<void> main() async {
@@ -25,7 +26,8 @@ Future<void> main() async {
     debugPrint('Amplify configuration failed.');
   }
 
-  runApp(ColorSwitcher(initialColor: UnityColor, child: const MyApp()));
+  runApp(ProviderScope(
+      child: ColorSwitcher(initialColor: UnityColor, child: const MyApp())));
 }
 
 class MyApp extends StatelessWidget {
@@ -42,13 +44,13 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Portfolio extends StatefulWidget {
+class Portfolio extends ConsumerStatefulWidget {
   Portfolio({super.key});
 
   final IFrameElement _iframeElement = IFrameElement();
 
   @override
-  State<Portfolio> createState() => _PortfolioState();
+  ConsumerState<Portfolio> createState() => _PortfolioState();
 }
 
 Future<void> _configureAmplify() async {
@@ -58,7 +60,7 @@ Future<void> _configureAmplify() async {
   await Amplify.configure(amplifyconfig);
 }
 
-class _PortfolioState extends State<Portfolio> {
+class _PortfolioState extends ConsumerState<Portfolio> {
   Image headerImg =
       Image.asset('assets/images/U_Logo_T1_MadeWith_Small_White_RGB.png');
   DisplayType displayType = DisplayType.unity;
@@ -138,7 +140,7 @@ class _PortfolioState extends State<Portfolio> {
               children: [
                 Header(img: headerImg),
                 EntryGrid(
-                    entryList: _getEntryList(),
+                    projectsList: _getEntryList(),
                     showEntryDetails: showEntryDetails,
                     isMobile: _isMobile()),
               ],
@@ -161,7 +163,7 @@ class _PortfolioState extends State<Portfolio> {
         children: [
           Header(img: headerImg),
           EntryGrid(
-              entryList: _getEntryList(),
+              projectsList: _getEntryList(),
               showEntryDetails: showEntryDetails,
               isMobile: _isMobile()),
         ],
@@ -183,7 +185,7 @@ class _PortfolioState extends State<Portfolio> {
         children: [
           Header(img: headerImg),
           EntryGrid(
-              entryList: _getEntryList(),
+              projectsList: _getEntryList(),
               showEntryDetails: showEntryDetails,
               isMobile: _isMobile()),
         ],
@@ -191,19 +193,21 @@ class _PortfolioState extends State<Portfolio> {
     }
   }
 
-  List<EntryData> _getEntryList() {
-    switch (displayType) {
-      case DisplayType.unity:
-        return UnityEntryList;
-      case DisplayType.unreal:
-        return UnrealEntryList;
-      case DisplayType.webgl:
-        return WebglEntryList;
-      case DisplayType.ludum:
-        return LudumDareEntryList;
-      default:
-        return UnityEntryList;
-    }
+  AsyncValue<List<Project>> _getEntryList() {
+    // switch (displayType) {
+    //   case DisplayType.unity:
+    //     return UnityEntryList;
+    //   case DisplayType.unreal:
+    //     return UnrealEntryList;
+    //   case DisplayType.webgl:
+    //     return WebglEntryList;
+    //   case DisplayType.ludum:
+    //     return LudumDareEntryList;
+    //   default:
+    //     return UnityEntryList;
+    // }
+    final projectListValue = ref.watch(projectsListControllerProvider);
+    return projectListValue;
   }
 
   void showEntryDetails(EntryData data) {

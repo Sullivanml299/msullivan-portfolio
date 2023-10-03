@@ -31,8 +31,10 @@ class Project extends amplify_core.Model {
   final String? _projectDescription;
   final amplify_core.TemporalDate? _createdDate;
   final String? _youtubeUrl;
-  final String? _tripImageUrl;
-  final String? _tripImageKey;
+  final String? _projectImageUrl;
+  final String? _projectImageKey;
+  final String? _projectGifUrl;
+  final String? _projectGifKey;
   final amplify_core.TemporalDateTime? _createdAt;
   final amplify_core.TemporalDateTime? _updatedAt;
 
@@ -101,12 +103,20 @@ class Project extends amplify_core.Model {
     }
   }
   
-  String? get tripImageUrl {
-    return _tripImageUrl;
+  String? get projectImageUrl {
+    return _projectImageUrl;
   }
   
-  String? get tripImageKey {
-    return _tripImageKey;
+  String? get projectImageKey {
+    return _projectImageKey;
+  }
+  
+  String? get projectGifUrl {
+    return _projectGifUrl;
+  }
+  
+  String? get projectGifKey {
+    return _projectGifKey;
   }
   
   amplify_core.TemporalDateTime? get createdAt {
@@ -117,17 +127,19 @@ class Project extends amplify_core.Model {
     return _updatedAt;
   }
   
-  const Project._internal({required this.id, required projectName, required projectDescription, required createdDate, required youtubeUrl, tripImageUrl, tripImageKey, createdAt, updatedAt}): _projectName = projectName, _projectDescription = projectDescription, _createdDate = createdDate, _youtubeUrl = youtubeUrl, _tripImageUrl = tripImageUrl, _tripImageKey = tripImageKey, _createdAt = createdAt, _updatedAt = updatedAt;
+  const Project._internal({required this.id, required projectName, required projectDescription, required createdDate, required youtubeUrl, projectImageUrl, projectImageKey, projectGifUrl, projectGifKey, createdAt, updatedAt}): _projectName = projectName, _projectDescription = projectDescription, _createdDate = createdDate, _youtubeUrl = youtubeUrl, _projectImageUrl = projectImageUrl, _projectImageKey = projectImageKey, _projectGifUrl = projectGifUrl, _projectGifKey = projectGifKey, _createdAt = createdAt, _updatedAt = updatedAt;
   
-  factory Project({String? id, required String projectName, required String projectDescription, required amplify_core.TemporalDate createdDate, required String youtubeUrl, String? tripImageUrl, String? tripImageKey}) {
+  factory Project({String? id, required String projectName, required String projectDescription, required amplify_core.TemporalDate createdDate, required String youtubeUrl, String? projectImageUrl, String? projectImageKey, String? projectGifUrl, String? projectGifKey}) {
     return Project._internal(
       id: id == null ? amplify_core.UUID.getUUID() : id,
       projectName: projectName,
       projectDescription: projectDescription,
       createdDate: createdDate,
       youtubeUrl: youtubeUrl,
-      tripImageUrl: tripImageUrl,
-      tripImageKey: tripImageKey);
+      projectImageUrl: projectImageUrl,
+      projectImageKey: projectImageKey,
+      projectGifUrl: projectGifUrl,
+      projectGifKey: projectGifKey);
   }
   
   bool equals(Object other) {
@@ -143,8 +155,10 @@ class Project extends amplify_core.Model {
       _projectDescription == other._projectDescription &&
       _createdDate == other._createdDate &&
       _youtubeUrl == other._youtubeUrl &&
-      _tripImageUrl == other._tripImageUrl &&
-      _tripImageKey == other._tripImageKey;
+      _projectImageUrl == other._projectImageUrl &&
+      _projectImageKey == other._projectImageKey &&
+      _projectGifUrl == other._projectGifUrl &&
+      _projectGifKey == other._projectGifKey;
   }
   
   @override
@@ -160,8 +174,10 @@ class Project extends amplify_core.Model {
     buffer.write("projectDescription=" + "$_projectDescription" + ", ");
     buffer.write("createdDate=" + (_createdDate != null ? _createdDate!.format() : "null") + ", ");
     buffer.write("youtubeUrl=" + "$_youtubeUrl" + ", ");
-    buffer.write("tripImageUrl=" + "$_tripImageUrl" + ", ");
-    buffer.write("tripImageKey=" + "$_tripImageKey" + ", ");
+    buffer.write("projectImageUrl=" + "$_projectImageUrl" + ", ");
+    buffer.write("projectImageKey=" + "$_projectImageKey" + ", ");
+    buffer.write("projectGifUrl=" + "$_projectGifUrl" + ", ");
+    buffer.write("projectGifKey=" + "$_projectGifKey" + ", ");
     buffer.write("createdAt=" + (_createdAt != null ? _createdAt!.format() : "null") + ", ");
     buffer.write("updatedAt=" + (_updatedAt != null ? _updatedAt!.format() : "null"));
     buffer.write("}");
@@ -169,15 +185,17 @@ class Project extends amplify_core.Model {
     return buffer.toString();
   }
   
-  Project copyWith({String? projectName, String? projectDescription, amplify_core.TemporalDate? createdDate, String? youtubeUrl, String? tripImageUrl, String? tripImageKey}) {
+  Project copyWith({String? projectName, String? projectDescription, amplify_core.TemporalDate? createdDate, String? youtubeUrl, String? projectImageUrl, String? projectImageKey, String? projectGifUrl, String? projectGifKey}) {
     return Project._internal(
       id: id,
       projectName: projectName ?? this.projectName,
       projectDescription: projectDescription ?? this.projectDescription,
       createdDate: createdDate ?? this.createdDate,
       youtubeUrl: youtubeUrl ?? this.youtubeUrl,
-      tripImageUrl: tripImageUrl ?? this.tripImageUrl,
-      tripImageKey: tripImageKey ?? this.tripImageKey);
+      projectImageUrl: projectImageUrl ?? this.projectImageUrl,
+      projectImageKey: projectImageKey ?? this.projectImageKey,
+      projectGifUrl: projectGifUrl ?? this.projectGifUrl,
+      projectGifKey: projectGifKey ?? this.projectGifKey);
   }
   
   Project copyWithModelFieldValues({
@@ -185,8 +203,10 @@ class Project extends amplify_core.Model {
     ModelFieldValue<String>? projectDescription,
     ModelFieldValue<amplify_core.TemporalDate>? createdDate,
     ModelFieldValue<String>? youtubeUrl,
-    ModelFieldValue<String?>? tripImageUrl,
-    ModelFieldValue<String?>? tripImageKey
+    ModelFieldValue<String?>? projectImageUrl,
+    ModelFieldValue<String?>? projectImageKey,
+    ModelFieldValue<String?>? projectGifUrl,
+    ModelFieldValue<String?>? projectGifKey
   }) {
     return Project._internal(
       id: id,
@@ -194,8 +214,10 @@ class Project extends amplify_core.Model {
       projectDescription: projectDescription == null ? this.projectDescription : projectDescription.value,
       createdDate: createdDate == null ? this.createdDate : createdDate.value,
       youtubeUrl: youtubeUrl == null ? this.youtubeUrl : youtubeUrl.value,
-      tripImageUrl: tripImageUrl == null ? this.tripImageUrl : tripImageUrl.value,
-      tripImageKey: tripImageKey == null ? this.tripImageKey : tripImageKey.value
+      projectImageUrl: projectImageUrl == null ? this.projectImageUrl : projectImageUrl.value,
+      projectImageKey: projectImageKey == null ? this.projectImageKey : projectImageKey.value,
+      projectGifUrl: projectGifUrl == null ? this.projectGifUrl : projectGifUrl.value,
+      projectGifKey: projectGifKey == null ? this.projectGifKey : projectGifKey.value
     );
   }
   
@@ -205,13 +227,15 @@ class Project extends amplify_core.Model {
       _projectDescription = json['projectDescription'],
       _createdDate = json['createdDate'] != null ? amplify_core.TemporalDate.fromString(json['createdDate']) : null,
       _youtubeUrl = json['youtubeUrl'],
-      _tripImageUrl = json['tripImageUrl'],
-      _tripImageKey = json['tripImageKey'],
+      _projectImageUrl = json['projectImageUrl'],
+      _projectImageKey = json['projectImageKey'],
+      _projectGifUrl = json['projectGifUrl'],
+      _projectGifKey = json['projectGifKey'],
       _createdAt = json['createdAt'] != null ? amplify_core.TemporalDateTime.fromString(json['createdAt']) : null,
       _updatedAt = json['updatedAt'] != null ? amplify_core.TemporalDateTime.fromString(json['updatedAt']) : null;
   
   Map<String, dynamic> toJson() => {
-    'id': id, 'projectName': _projectName, 'projectDescription': _projectDescription, 'createdDate': _createdDate?.format(), 'youtubeUrl': _youtubeUrl, 'tripImageUrl': _tripImageUrl, 'tripImageKey': _tripImageKey, 'createdAt': _createdAt?.format(), 'updatedAt': _updatedAt?.format()
+    'id': id, 'projectName': _projectName, 'projectDescription': _projectDescription, 'createdDate': _createdDate?.format(), 'youtubeUrl': _youtubeUrl, 'projectImageUrl': _projectImageUrl, 'projectImageKey': _projectImageKey, 'projectGifUrl': _projectGifUrl, 'projectGifKey': _projectGifKey, 'createdAt': _createdAt?.format(), 'updatedAt': _updatedAt?.format()
   };
   
   Map<String, Object?> toMap() => {
@@ -220,8 +244,10 @@ class Project extends amplify_core.Model {
     'projectDescription': _projectDescription,
     'createdDate': _createdDate,
     'youtubeUrl': _youtubeUrl,
-    'tripImageUrl': _tripImageUrl,
-    'tripImageKey': _tripImageKey,
+    'projectImageUrl': _projectImageUrl,
+    'projectImageKey': _projectImageKey,
+    'projectGifUrl': _projectGifUrl,
+    'projectGifKey': _projectGifKey,
     'createdAt': _createdAt,
     'updatedAt': _updatedAt
   };
@@ -232,8 +258,10 @@ class Project extends amplify_core.Model {
   static final PROJECTDESCRIPTION = amplify_core.QueryField(fieldName: "projectDescription");
   static final CREATEDDATE = amplify_core.QueryField(fieldName: "createdDate");
   static final YOUTUBEURL = amplify_core.QueryField(fieldName: "youtubeUrl");
-  static final TRIPIMAGEURL = amplify_core.QueryField(fieldName: "tripImageUrl");
-  static final TRIPIMAGEKEY = amplify_core.QueryField(fieldName: "tripImageKey");
+  static final PROJECTIMAGEURL = amplify_core.QueryField(fieldName: "projectImageUrl");
+  static final PROJECTIMAGEKEY = amplify_core.QueryField(fieldName: "projectImageKey");
+  static final PROJECTGIFURL = amplify_core.QueryField(fieldName: "projectGifUrl");
+  static final PROJECTGIFKEY = amplify_core.QueryField(fieldName: "projectGifKey");
   static var schema = amplify_core.Model.defineSchema(define: (amplify_core.ModelSchemaDefinition modelSchemaDefinition) {
     modelSchemaDefinition.name = "Project";
     modelSchemaDefinition.pluralName = "Projects";
@@ -276,13 +304,25 @@ class Project extends amplify_core.Model {
     ));
     
     modelSchemaDefinition.addField(amplify_core.ModelFieldDefinition.field(
-      key: Project.TRIPIMAGEURL,
+      key: Project.PROJECTIMAGEURL,
       isRequired: false,
       ofType: amplify_core.ModelFieldType(amplify_core.ModelFieldTypeEnum.string)
     ));
     
     modelSchemaDefinition.addField(amplify_core.ModelFieldDefinition.field(
-      key: Project.TRIPIMAGEKEY,
+      key: Project.PROJECTIMAGEKEY,
+      isRequired: false,
+      ofType: amplify_core.ModelFieldType(amplify_core.ModelFieldTypeEnum.string)
+    ));
+    
+    modelSchemaDefinition.addField(amplify_core.ModelFieldDefinition.field(
+      key: Project.PROJECTGIFURL,
+      isRequired: false,
+      ofType: amplify_core.ModelFieldType(amplify_core.ModelFieldTypeEnum.string)
+    ));
+    
+    modelSchemaDefinition.addField(amplify_core.ModelFieldDefinition.field(
+      key: Project.PROJECTGIFKEY,
       isRequired: false,
       ofType: amplify_core.ModelFieldType(amplify_core.ModelFieldTypeEnum.string)
     ));
