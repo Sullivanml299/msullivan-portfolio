@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:msullivan_portfolio/data/entry_data.dart';
 import 'package:msullivan_portfolio/utils/color_switcher.dart';
 
-import 'utils/youtube_player.dart';
-
 class Entry extends StatefulWidget {
   const Entry(
       {super.key, required this.entryData, required this.showEntryDetails});

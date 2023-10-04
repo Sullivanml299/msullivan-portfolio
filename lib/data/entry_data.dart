@@ -19,6 +19,19 @@ enum DisplayType { unity, unreal, webgl, ludum, resume }
 
 List<EntryData> UnityEntryList = [
   EntryData(
+      title: "Rune Classifier - Door",
+      description: "Runtime image-classifier magic system prototype.\n\n"
+          "ConvNet classifier trained using PyTorch and exported to ONNX format."
+          " Network was trained using 100 base images for the rune,"
+          " augmented to 1000 images using random transformations."
+          " Implemented in Unity using Barracuda."
+          " Door effect is made using a second camera and some 3D transformation Matrices."
+          " Shaders were made using ShaderGraph.",
+      imgPath: "assets/images/Door_Still.jpg",
+      gifPath: "assets/images/Door.gif",
+      youtubeLink:
+          "https://www.youtube.com/embed/6qEjTg_EeIM?si=tdM2VxBUrr-Qe6QD"),
+  EntryData(
       title: "Rune Classifier",
       description: "Runtime image-classifier magic system prototype.\n\n"
           "ConvNet classifier trained using PyTorch and exported to ONNX format."
@@ -46,14 +59,6 @@ List<EntryData> UnityEntryList = [
       gifPath: "assets/images/vines.gif",
       youtubeLink: "https://www.youtube.com/embed/o1fiW7CzJvE"),
   EntryData(
-      title: "State Machine AI",
-      description: "Simple state machine enemy AI for the bear and mushrooms."
-          " The color cube is the target."
-          " Enemy models are free assets from the Unity Asset Store.",
-      imgPath: "assets/images/bear_still.jpg",
-      gifPath: "assets/images/bear.gif",
-      youtubeLink: "https://www.youtube.com/embed/xc6XH3HuEfY"),
-  EntryData(
       title: "Watchers",
       description: "Experimenting with shaders in Unity.",
       imgPath: "assets/images/watchers_still.jpg",
@@ -66,19 +71,6 @@ List<EntryData> UnityEntryList = [
       imgPath: "assets/images/breakout_still.jpg",
       gifPath: "assets/images/breakout.gif",
       youtubeLink: "https://www.youtube.com/embed/jTD17VrgdiE"),
-  EntryData(
-      title: "FMOD - Train",
-      description:
-          "Playing with FMOD. All audio tracks used were self-made using Finale software.",
-      imgPath: "assets/images/train_still.jpg",
-      gifPath: "assets/images/train.gif",
-      youtubeLink: "https://www.youtube.com/embed/61BsdPnK_pg"),
-  EntryData(
-      title: "Fun with Quaternions",
-      description: "Playing with Quaternions.",
-      imgPath: "assets/images/rotations_still.jpg",
-      gifPath: "assets/images/rotations.gif",
-      youtubeLink: "https://www.youtube.com/embed/P4_sIS0uxvI"),
 ];
 
 //UNREAL
