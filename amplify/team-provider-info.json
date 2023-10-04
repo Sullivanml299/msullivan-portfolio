@@ -14,6 +14,12 @@
     "categories": {
       "api": {
         "msullivanportfolio": {}
+      },
+      "auth": {
+        "msullivanportfolio9ab298f6": {}
+      },
+      "storage": {
+        "s3a6df5197": {}
       }
     }
   }

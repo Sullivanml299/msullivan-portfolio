@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:msullivan_portfolio/data/entry_data.dart';
-import 'package:msullivan_portfolio/utils/color_switcher.dart';
+import 'package:msullivan_portfolio/common/utils/color_switcher.dart';
 import 'package:msullivan_portfolio/models/ModelProvider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 

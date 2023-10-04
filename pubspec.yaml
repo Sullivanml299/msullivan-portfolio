@@ -37,10 +37,10 @@ dependencies:
   google_fonts: ^6.1.0
   url_launcher: ^6.1.11
   auto_size_text: ^3.0.0
-  amplify_api: ^1.0.0-next.1
-  amplify_auth_cognito: ^1.0.0-next.1
-  amplify_authenticator: ^1.0.0-next.1
-  amplify_flutter: ^1.0.0-next.1
+  amplify_api: ^1.0.0
+  amplify_auth_cognito: ^1.0.0
+  amplify_authenticator: ^1.0.0
+  amplify_flutter: ^1.0.0
   amplify_storage_s3: ^1.0.0
   cached_network_image: ^3.2.3
   cupertino_icons: ^1.0.5

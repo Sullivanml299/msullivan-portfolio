@@ -1,0 +1,16 @@
+{
+  "resourceName": "s3a6df5197",
+  "policyUUID": "a6df5197",
+  "bucketName": "msullivanportfoliostorage",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

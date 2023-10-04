@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:msullivan_portfolio/entry.dart';
 import 'package:msullivan_portfolio/models/ModelProvider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'data/entry_data.dart';
 
 class EntryGrid extends StatelessWidget {
   const EntryGrid(

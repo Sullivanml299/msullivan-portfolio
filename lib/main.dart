@@ -5,18 +5,20 @@ import 'package:msullivan_portfolio/details_pane.dart';
 import 'package:msullivan_portfolio/entry_grid.dart';
 import 'package:msullivan_portfolio/header.dart';
 import 'package:msullivan_portfolio/resume.dart';
-import 'package:msullivan_portfolio/utils/custom_components.dart';
+import 'package:msullivan_portfolio/common/utils/custom_components.dart';
 import 'amplifyconfiguration.dart';
 import 'footer.dart';
-import 'utils/color_switcher.dart';
+import 'package:msullivan_portfolio/common/utils/color_switcher.dart';
 import 'dart:html';
 import 'dart:ui' as ui;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:amplify_api/amplify_api.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:msullivan_portfolio/models/ModelProvider.dart';
-import 'package:msullivan_portfolio/utils/controller/projects_list_controller.dart';
+import 'package:msullivan_portfolio/features/project/controller/projects_list_controller.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
+import 'package:amplify_storage_s3/amplify_storage_s3.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -55,7 +57,9 @@ class Portfolio extends ConsumerStatefulWidget {
 
 Future<void> _configureAmplify() async {
   await Amplify.addPlugins([
+    AmplifyAuthCognito(),
     AmplifyAPI(modelProvider: ModelProvider.instance),
+    AmplifyStorageS3()
   ]);
   await Amplify.configure(amplifyconfig);
 }

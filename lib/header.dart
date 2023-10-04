@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'utils/color_switcher.dart';
+import 'package:msullivan_portfolio/common/utils/color_switcher.dart';
 
 class Header extends StatelessWidget {
   const Header({
